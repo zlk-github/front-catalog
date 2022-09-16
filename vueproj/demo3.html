@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Vue自定义全局组件</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+	</head>
+	<body>
+		<!--1自定义组件data要有返回值，自定义组件必须返回template-->
+		<!--2可以在vue中使用自定义组件-->
+		<!--3全局自定义组件可以多次使用-->
+		<!--4自定义组件可以使用多次，函数内部数据是局部变量，不会相互影响（若要影响，声明全局变量）-->
+		<div id="app">
+			 <buttion-counter></buttion-counter>
+			 <buttion-counter></buttion-counter>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var myData = {count:0};
+		
+		//自定义组件buttion-counter（全局组件）,它支持Vue的data,methode,钩子函数等.必须在创建前定义.
+		Vue.component("buttion-counter",{
+			data:function(){
+				/* return {
+					//局部
+					count:0
+				} */
+				//全局
+				return myData;
+			},
+			//自定义组件 返回的标签与内容.只能返回一个根元素
+			template:'<buttion v-on:click="count++">{{count}}</buttion>'
+		})
+		
+		new Vue({
+			el:"#app"
+		});
+	</script>
+		
+</html>

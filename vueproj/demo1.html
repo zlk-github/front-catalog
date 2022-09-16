@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Vue数据绑定功能</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+	</head>
+	<body>
+		<!--v-bind比较特殊，可以只写   :加后面(如:title)-->
+		<div id="app" :title="vueTitle">
+			{{massage}}
+		</div>
+	</body>
+	<script type="text/javascript">
+		var app = new Vue({
+			el:'#app',
+			data:{
+				massage:'hello word!',
+				vueTitle:'这是一个title,v-bind开头'
+			}
+		})
+	</script>
+		
+</html>
